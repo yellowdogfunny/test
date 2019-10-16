@@ -1,0 +1,7 @@
+.divClass{
+  border: 1px solid grey;
+  background-color: rgb(255, 180, 180);
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
