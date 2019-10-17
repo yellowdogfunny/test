@@ -1,6 +1,17 @@
 body{
   border-top: 3px solid black;
-  background-color: red;
+  background-color: rgb(220, 220, 220);
+  /*
+  background-image: url(images/woodendesk.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  */
+}
+
+*{
+  box-sizing: border-box;
 }
 
 .container-fluid{
@@ -8,14 +19,14 @@ body{
 }
 
 .logodiv{
-  width: 281px;
+/*  width: 281.02px;*/
 }
 
-.navbar{
+/*.navbar{
   padding: 0;
   padding-left: 3em;
   padding-right: 3em;
-}
+}*/
 
 ul{
   padding-top: 6;
@@ -23,11 +34,34 @@ ul{
 }
 
 a{
-  color: black;
-  border-bottom: 1px solid #f8f9fa;
+  color: grey !important;
+  text-decoration: none;
+}
+
+li a{
+  font-size: 1.2em;
 }
 
 a:hover{
-  color: grey;
+  color: black !important;
+}
+
+.navbar{
   border-bottom: 1px solid black;
+}
+
+@media (max-width: 767px) {
+  .inputField{
+    display: block;
+    width: 100% !important;
+    font-size: 1.5em;
+  }
+  .searchBtn{
+    width: 100%;
+    font-size: 1.5em;
+  }
+
+  li{
+    font-size: 1.5em;
+  }
 }
