@@ -8,12 +8,17 @@ body{
   background-attachment: fixed;
   background-size: cover;
   */
+  height: 100%;
+  word-wrap: break-word;
+  font-family: 'Barlow', sans-serif;
 }
 
 *{
   box-sizing: border-box;
 }
-
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////
+//          HEADER
+/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .container-fluid{
   padding: 0;
 }
@@ -83,4 +88,79 @@ a:hover{
   .homeBtn{
     border-top: 1px solid black;
   }
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////
+//          CONTENT
+/////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.sloganimg{
+  position: relative;
+  /*opacity: 0.3;*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sloganimg {
+  background-image: url("images/sloganimg4.jpg");
+  height: 50%;
+  text-align: center;
+}
+
+.slogan{
+  padding-top: 5%;
+  height: 100%;
+  font-size: 6em;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.slogan2{
+  font-size: 0.5em;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+}
+
+
+.fnsContainer1{
+
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: rgba(227, 206, 179);
+  border-bottom: 1px solid red;
+  margin: 0;
+}
+
+.foodPic{
+  padding: 1%;
+  /*border: 1px solid blue;*/
+  text-align: center;
+}
+
+.foodDescContainer{
+  padding: 1%;
+  position: relative;
+}
+
+.add2cart{
+  position: absolute;
+  bottom: 5%;
+  padding: 1%;
+}
+
+.newItem{
+  color: red;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 0.6em;
+}
+
+.itemPrice{
+  font-size: 3em;
+}
+
+.addBtn{
+  font-size: 1.2em;
 }
