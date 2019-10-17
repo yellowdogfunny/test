@@ -1,7 +1,33 @@
-.divClass{
-  border: 1px solid grey;
-  background-color: rgb(255, 180, 180);
-  text-align: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
+body{
+  border-top: 3px solid black;
+  background-color: red;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+.logodiv{
+  width: 281px;
+}
+
+.navbar{
+  padding: 0;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+ul{
+  padding-top: 6;
+  padding-bottom: 6;
+}
+
+a{
+  color: black;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+a:hover{
+  color: grey;
+  border-bottom: 1px solid black;
 }
