@@ -430,7 +430,7 @@ a:hover{
   .foodContainer{
     width: auto;
     height: auto;
-    text-align: center;
+    text-align: center;  
     position: relative;
   }
 }
