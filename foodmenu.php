@@ -46,8 +46,8 @@
       <h2>All</h2>
     </div>
     <div class="row fnsContainer1 fnsContainer2">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 foodContainer food">
 
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
         <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
         <div class="fmFoodName">
           Burger
@@ -55,6 +55,7 @@
         <div class="fmFoodDesc">
           Teletina, salata, rajcica, sir, kecap, majoneza
         </div>
+        <br />
         <div class="fmFoodPrice">
           <span class="itemPrice3">$20.99</span>
           <button class="addBtn3 btn btn-danger">Add to cart!</button>
@@ -62,7 +63,7 @@
         <hr width="90%" color="red"/>
       </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
         <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
         <div class="fmFoodName">
           Burger
@@ -70,6 +71,7 @@
         <div class="fmFoodDesc">
           Teletina, salata, rajcica, sir, kecap, majoneza
         </div>
+        <br />
         <div class="fmFoodPrice">
           <span class="itemPrice3">$20.99</span>
           <button class="addBtn3 btn btn-danger">Add to cart!</button>
@@ -77,7 +79,7 @@
         <hr width="90%" color="red"/>
       </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
         <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
         <div class="fmFoodName">
           Burger
@@ -85,6 +87,7 @@
         <div class="fmFoodDesc">
           Teletina, salata, rajcica, sir, kecap, majoneza
         </div>
+        <br />
         <div class="fmFoodPrice">
           <span class="itemPrice3">$20.99</span>
           <button class="addBtn3 btn btn-danger">Add to cart!</button>
@@ -92,7 +95,7 @@
         <hr width="90%" color="red"/>
       </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
         <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
         <div class="fmFoodName">
           Burger
@@ -100,6 +103,7 @@
         <div class="fmFoodDesc">
           Teletina, salata, rajcica, sir, kecap, majoneza
         </div>
+        <br />
         <div class="fmFoodPrice">
           <span class="itemPrice3">$20.99</span>
           <button class="addBtn3 btn btn-danger">Add to cart!</button>
@@ -107,7 +111,7 @@
         <hr width="90%" color="red"/>
       </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
         <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
         <div class="fmFoodName">
           Burger
@@ -115,6 +119,7 @@
         <div class="fmFoodDesc">
           Teletina, salata, rajcica, sir, kecap, majoneza
         </div>
+        <br />
         <div class="fmFoodPrice">
           <span class="itemPrice3">$20.99</span>
           <button class="addBtn3 btn btn-danger">Add to cart!</button>
@@ -122,6 +127,21 @@
         <hr width="90%" color="red"/>
       </div>
 
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
+        <div class="fmFoodName">
+          Burger
+        </div>
+        <div class="fmFoodDesc">
+          Teletina, salata, rajcica, sir, kecap, majoneza
+        </div>
+        <br />
+        <div class="fmFoodPrice">
+          <span class="itemPrice3">$20.99</span>
+          <button class="addBtn3 btn btn-danger">Add to cart!</button>
+        </div>
+        <hr width="90%" color="red"/>
+      </div>
     </div>
   </div>
 
