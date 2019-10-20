@@ -1,0 +1,8 @@
+tablice
+
+food
+id, img, foodname, type(salads i to), desc, price
+
+
+stuff
+id, img, foodname, type(clothes itd) desc, price

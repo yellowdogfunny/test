@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="logodiv">
-      <a class="navbar-brand" href="#"><img src="foodnstufflogo.png" width="100em"/></a>
+      <a class="navbar-brand" href="index.php"><img src="foodnstufflogo.png" width="100em"/></a>
     </div>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">

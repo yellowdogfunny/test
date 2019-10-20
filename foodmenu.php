@@ -1,3 +1,4 @@
+<?php include 'includes/conn.php';?>
 <html lang="en">
 
 <head>
@@ -22,6 +23,7 @@
   <?php include "includes/headermenu.php"; ?>
 
   <!-- SORT MENU -->
+
   <div class="container-fluid sortMenuContainer">
     <div class="sortMenuDiv">
       All <input type="checkbox"/>
@@ -30,7 +32,7 @@
       Salads <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
-      Main course <input type="checkbox"/>
+      Fastfood <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
       Desserts <input type="checkbox"/>
@@ -47,101 +49,35 @@
     </div>
     <div class="row fnsContainer1 fnsContainer2">
 
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
+      <?php
+        $sql = 'SELECT * FROM foodtable';
+        $sqlquery = mysqli_query($conn, $sql);
 
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
+        while($row = mysqli_fetch_array($sqlquery)){
+          $food_id = $row['food_id'];
+          $food_img = $row['food_img'];
+          $food_name = $row['food_name'];
+          //$food_type = $row['food_type'];
+          $food_desc = $row['food_desc'];
+          $food_price = $row['food_price'];
+      ?>
 
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
-
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
-
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
-
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-        <img src="images/img1.jpg" class="img-responsive img-thumbnail" alt="">
-        <div class="fmFoodName">
-          Burger
-        </div>
-        <div class="fmFoodDesc">
-          Teletina, salata, rajcica, sir, kecap, majoneza
-        </div>
-        <br />
-        <div class="fmFoodPrice">
-          <span class="itemPrice3">$20.99</span>
-          <button class="addBtn3 btn btn-danger">Add to cart!</button>
-        </div>
-        <hr width="90%" color="red"/>
-      </div>
+          <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
+            <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail" alt="">
+            <div class="fmFoodName" title="<?php echo $food_name; ?>"><?php echo $food_name; ?></div>
+            <div class="fmFoodDesc" title="<?php echo $food_desc; ?>">
+              <?php echo $food_desc; ?>
+            </div>
+            <br />
+            <div class="fmFoodPrice">
+              <span class="itemPrice3">$ <?php echo $food_price; ?></span>
+              <button class="addBtn3 btn btn-danger">Add to cart!</button>
+            </div>
+            <hr width="90%" color="red"/>
+          </div>
+      <?php
+        }
+      ?>
     </div>
   </div>
 
