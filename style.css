@@ -509,3 +509,20 @@ a:hover{
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////
 //          Administration
 /////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.adminTablesDiv{
+  width: 50% !important;
+  float: left;
+  border-right: 1px solid black !important;
+  padding:4%;
+}
+.adminTablesDiv table{
+  border-collapse: collapse;
+  width: 90%;
+}
+.breakword{
+  word-break: break-all;
+}
+.adminTablesDiv table tr td{
+  border: 1px solid black;
+}

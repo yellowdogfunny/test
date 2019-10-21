@@ -4,6 +4,7 @@ include "includes/conn.php";
 <html>
   <head>
     <title>Admin | Food&Stuff</title>
+    <link rel="stylesheet" href="style.css"/>
   </head>
 
   <body>
@@ -57,12 +58,37 @@ include "includes/conn.php";
     </form>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <hr />
 
-
+    <!-- FOOD -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <div class="adminTablesDiv">
     <h3>Edit or delete FOOD from table</h3>
     <form class="" action="admin.php" method="GET">
-      Search for item: <input type="text" name="searchInput"/>
+      Search for FOOD: <input type="text" name="searchInput"/>
       <input type="submit" name="searchSubmitBtn" value="Search">
       <button type="button" onclick="window.location.href='admin.php'" name="resetSearch">Reset</button>
     </form>
@@ -100,27 +126,27 @@ include "includes/conn.php";
         <table>
           <tr>
             <td>ID:</td>
-            <td><?php echo $food_id; ?></td>
+            <td class="breakword"><?php echo $food_id; ?></td>
           </tr>
           <tr>
             <td>Image:</td>
-            <td><?php echo $food_img; ?></td>
+            <td class="breakword"><?php echo $food_img; ?></td>
           </tr>
           <tr>
             <td>Food name:</td>
-            <td><?php echo $food_name; ?></td>
+            <td class="breakword"><?php echo $food_name; ?></td>
           </tr>
           <tr>
             <td>Food type:</td>
-            <td><?php echo $food_type; ?></td>
+            <td class="breakword"><?php echo $food_type; ?></td>
           </tr>
           <tr>
             <td>Description:</td>
-            <td><?php echo $food_desc; ?></td>
+            <td class="breakword"><?php echo $food_desc; ?></td>
           </tr>
           <tr>
             <td>Price:</td>
-            <td><?php echo $food_price; ?></td>
+            <td class="breakword"><?php echo $food_price; ?></td>
           </tr>
           <tr>
             <td>
@@ -132,14 +158,121 @@ include "includes/conn.php";
                 if(isset($_GET['id'])){
                   $id = $_GET['id'];
                   $sqlquery2 = mysqli_query($conn, "DELETE FROM foodtable WHERE food_id = $id");
+                  echo "<script>window.location.href='admin.php'</script>";
                 }
               ?>
             </td>
           </tr>
         </table>
-        <hr />
+        <br /><br />
       <?php
       }
       ?>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <!-- STUFF ============================================================ -->
+    <div class="adminTablesDiv">
+    <h3>Edit or delete STUFF from table</h3>
+    <form class="" action="admin.php" method="GET">
+      Search for STUFF: <input type="text" name="searchInput2"/>
+      <input type="submit" name="searchSubmitBtn2" value="Search">
+      <button type="button" onclick="window.location.href='admin.php'" name="resetSearch">Reset</button>
+    </form>
+
+    <?php
+      if(!isset($_GET['searchInput2'])){
+        $sql2 = "SELECT * FROM stufftable";
+      }
+      else{
+        $searchInput2 = $_GET['searchInput2'];
+        $sql2 = "SELECT * FROM stufftable WHERE stuff_name='$searchInput2'";
+      }
+
+
+
+
+      $sqlquery2 = mysqli_query($conn, $sql2);
+
+      while($row2 = mysqli_fetch_array($sqlquery2)){
+        $stuff_id = $row2['stuff_id'];
+        $stuff_img = $row2['stuff_img'];
+        $stuff_name = $row2['stuff_name'];
+        $stuff_type = $row2['stuff_type'];
+        $stuff_desc = $row2['stuff_desc'];
+        $stuff_price = $row2['stuff_price'];
+
+    ?>
+        <table>
+          <tr>
+            <td>ID:</td>
+            <td class="breakword"><?php echo $stuff_id; ?></td>
+          </tr>
+          <tr>
+            <td>Image:</td>
+            <td class="breakword"><?php echo $stuff_img; ?></td>
+          </tr>
+          <tr>
+            <td>Food name:</td>
+            <td class="breakword"><?php echo $stuff_name; ?></td>
+          </tr>
+          <tr>
+            <td>Food type:</td>
+            <td class="breakword"><?php echo $stuff_type; ?></td>
+          </tr>
+          <tr>
+            <td>Description:</td>
+            <td class="breakword"><?php echo $stuff_desc; ?></td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td class="breakword"><?php echo $stuff_price; ?></td>
+          </tr>
+          <tr>
+            <td>
+              <a href="edit.php?id2=<?php echo $stuff_id; ?>">- Edit -</a>
+            </td>
+            <td>
+              <a href="admin.php?id2=<?php echo $stuff_id; ?>">- Delete -</a>
+              <?php
+                if(isset($_GET['id2'])){
+                  $id2 = $_GET['id2'];
+                  $sqlquery3 = mysqli_query($conn, "DELETE FROM stufftable WHERE stuff_id = $id2");
+                  echo "<script>window.location.href='admin.php'</script>";
+                }
+              ?>
+            </td>
+          </tr>
+        </table>
+        <br /><br />
+      <?php
+      }
+      ?>
+    </div>
   </body>
 </html>

@@ -1,3 +1,4 @@
+<?php include 'includes/conn.php';?>
 <html lang="en">
 
 <head>
@@ -21,30 +22,7 @@
 
 <body>
   <!-- HEADER -->
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="logodiv">
-        <a class="navbar-brand" href="#"><img src="foodnstufflogo.png" width="100em"/></a>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class="nav-link homeBtn" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="foodmenu.php">Food Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Stuff</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control mr-md-2 inputField" type="search" placeholder="Search something..." aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-md-0 searchBtn" type="submit"><i class="fas fa-search fa-sm searchIcon"></i></button>
-        </form>
-      </div>
-    </nav>
-  </div>
+  <?php include "includes/headermenu.php"; ?>
 
   <!-- CONTENT -->
   <div class="container-fluid">
@@ -62,20 +40,36 @@
         <h2>SPECIAL OFFERS</h2>
       </div>
 
+      <?php
+        $sql = "SELECT * FROM foodtable ORDER BY food_id DESC LIMIT 2";
+        $query = mysqli_query($conn, $sql);
+
+        while($row = mysqli_fetch_array($query)){
+          $food_id = $row['food_id'];
+          $food_img = $row['food_img'];
+          $food_name = $row['food_name'];
+          $food_type = $row['food_type'];
+          $food_desc = $row['food_desc'];
+          $food_price = $row['food_price'];
+
+      ?>
       <div class="row fnsContainer1">
         <div class="col-md-4 foodPic">
-          <img src="images/img1.jpg" class="img-responsive img-thumbnail"/>
+          <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail"/>
         </div>
         <div class="col-md-8 foodDescContainer">
-          <h1 class="headerRes"><span class="newItem">NEW!</span> Bruhburger </h1>
-          <p class="lead">Poopie poop Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi libero odit sequi officia, totam, ipsam inventore illo nisi distinctio. Quaerat repellendus tempora sit dolorem, odio molestias sunt labore eos ullam.</p>
+          <h1 class="headerRes"><span class="newItem">NEW!</span> <?php echo $food_name; ?> </h1>
+          <p class="lead"><?php echo $food_desc; ?></p>
           <div class="add2cart">
-            <span class="itemPrice">$5.99</span><br />
+            <span class="itemPrice"><?php echo "$".$food_price; ?></span><br />
             <button class="addBtn btn btn-danger">Add to cart!</button>
           </div>
         </div>
       </div>
-
+      <?php
+        }
+      ?>
+      <!--
       <div class="row fnsContainer1">
         <div class="col-md-4 foodPic">
           <img src="images/img4.jpg" class="img-responsive img-thumbnail"/>
@@ -89,7 +83,7 @@
           </div>
         </div>
       </div>
-    </div> <!-- ovo obrisat mozda-->
+    </div> ovo obrisat mozda-->
 
 
     <div class="header2 noBorder">

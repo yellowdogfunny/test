@@ -22,7 +22,7 @@ if(isset($_POST['submitbtn'])){
   $imageFile = $_FILES['file']['name'];
   $temp = $_FILES['file']['tmp_name'];
 
-  $randImgName = $randStr."_".$imageFile;
+  $randImgName = $choice."_".$randStr."_".$imageFile;
 
 
   move_uploaded_file($temp, "../images/".$randImgName);

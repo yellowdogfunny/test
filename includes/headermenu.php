@@ -10,7 +10,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link homeBtn" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link homeBtn" href="index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="foodmenu.php">Food Menu</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Stuff</a></li>
         <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
