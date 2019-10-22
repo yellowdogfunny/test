@@ -1,7 +1,7 @@
 <?php
 
 include "includes/conn.php";
-
+echo "<h1>EDIT</h1>";
 if(!isset($_GET['id']) && !isset($_GET['id2'])){
   echo "error <br /> <a href='admin.php'>go back</a>";
 }else{
@@ -54,7 +54,11 @@ if(!isset($_GET['id']) && !isset($_GET['id2'])){
       </tr>
       <tr>
         <td>Select new image: </td>
-        <td><input type="file" value="<?php echo $item_img; ?>" name="file"/></td>
+        <td><input type="file" name="file"/></td>
+      </tr>
+      <tr>
+        <td>Current image: </td>
+        <td><input type="text" value="<?php echo $item_img; ?>" name="currentImg"/></td>
       </tr>
       <tr>
         <td>Name: </td>
@@ -89,7 +93,7 @@ if(!isset($_GET['id']) && !isset($_GET['id2'])){
 <?php
 }
 
-
+echo "<a href='admin.php'>Admin home page</a>";
 
 
 

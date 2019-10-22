@@ -10,36 +10,61 @@ if(isset($_POST['submit'])){
   $item_price = $_GET["item_price"];
   $tablename = $_GET["tablename"];
 
+
+
   $upd_id = $_POST['id2'];
   $upd_name = $_POST['upd_name'];
   $upd_type = $_POST['upd_type'];
   $upd_desc = $_POST['upd_desc'];
   $upd_price = $_POST['upd_price'];
 
+  $crntImg = $_POST['currentImg'];
+  //echo "<hr /><hr />.$crntImg.<hr /><hr />";
   //TODO: ako se promjeni sve osim slike, ostane slika koja je bila prije
-  /*
-  if(empty($_FILES["file"]["name"])){
 
+  //ako je admin odabrao novu sliku
+  if(!empty($_FILES["file"]["name"])){
+    $randStr = generateRandomString();
+    $upd_file = $_FILES['file']['name'];
+    $temp = $_FILES['file']['tmp_name'];
+
+    $randImgName = "item_upd_".$item_id."_".$randStr."_".$upd_file;
+
+
+    move_uploaded_file($temp, "./images/".$randImgName);
+    $imgUrl = "http://localhost/projects/restaurant/images/$randImgName";
+
+    echo "<br /><br />Image changed: YES <br /><br />";
+
+
+    //: ovo je debugger
+    echo "Tablica: ".$tablename."<hr />";
+    echo "<br /><br />".$item_id."<br />".$crntImg."<br />".$item_name."<br />".$item_type."<br />".$item_desc."<br />".$item_price."<br /><br />";
+
+    echo "SE MJENJA S OVIM<br /><br />";
+
+    echo $upd_id."<br /> ".$imgUrl."<br />".$upd_name."<br /> ". $upd_type ."<br />".$upd_desc."<br />". $upd_price."<br /><br />";
+
+
+  }else if(empty($_FILES["file"]["name"])){ //ako nije odabrao novu sliku
+    $imgUrl = "http://localhost/projects/restaurant/images/$item_img";
+    echo "<br />Image changed: NO <br /><br />";
+
+    //: ovo je debugger
+    echo "Tablica: ".$tablename."<hr />";
+    echo "<br /><br />".$item_id."<br />".$crntImg."<br />".$item_name."<br />".$item_type."<br />".$item_desc."<br />".$item_price."<br /><br />";
+
+    echo "SE MJENJA S OVIM<br /><br />";
+
+    echo $upd_id."<br /> ".$crntImg."<br />".$upd_name."<br /> ". $upd_type ."<br />".$upd_desc."<br />". $upd_price."<br /><br />";
+  }else{
+    echo "error idk";
   }
-  */
-
-  $randStr = generateRandomString();
-  $upd_file = $_FILES['file']['name'];
-  $temp = $_FILES['file']['tmp_name'];
-
-  $randImgName = "item_upd_".$item_id."_".$randStr."_".$upd_file;
 
 
-  move_uploaded_file($temp, "./images/".$randImgName);
-  $imgUrl = "http://localhost/projects/restaurant/images/$randImgName";
 
-  //: ovo je debugger
-  echo "Tablica: ".$tablename."<hr />";
-  echo "<br /><br />".$item_id."<br />".$item_img."<br />".$item_name."<br />".$item_type."<br />".$item_desc."<br />".$item_price."<br /><br />";
 
-  echo "SE MJENJA S OVIM<br /><br />";
 
-  echo $upd_id."<br /> ".$imgUrl."<br />".$upd_name."<br /> ". $upd_type ."<br />".$upd_desc."<br />". $upd_price."<br /><br />";
 
   if($tablename == 'foodtable'){
     /*
@@ -89,6 +114,8 @@ if(isset($_POST['submit'])){
 
       echo $tablename." table sucessfully updated<br /> <br /> <a href='admin.php'>Click here to go to admin home page</a>";
       //header("refresh: 3; URL = admin.php");
+  }else{
+    echo "error - tablename not set";
   }
 
 
