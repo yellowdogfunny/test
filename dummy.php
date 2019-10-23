@@ -1,4 +1,5 @@
 <?php
+/*
   $conn = mysqli_connect("localhost", "root", "", "fnsdb");
   $sql = 'SELECT * FROM foodtable';
   $sqlquery = mysqli_query($conn, $sql);
@@ -17,5 +18,26 @@
     echo "food type: ".$food_type."<br />";
     echo "desc: ".$food_desc."<br />";
     echo "price: ".$food_price."<br /><hr />";
+  }*/
+
+?>
+<form action="dummy.php" method="GET">
+  <select name="selection">
+    <option>
+      bruh 1
+    </option>
+    <option>
+      bruh 2
+    </option>
+    <option>
+      bruh 3
+    </option>
+  </select>
+  <input type="submit"/>
+</form>
+
+<?php
+  if(isset($_GET['submit'])){
+    echo $_GET['selection'];
   }
 ?>

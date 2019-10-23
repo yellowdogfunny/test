@@ -38,7 +38,41 @@ include "includes/conn.php";
 
         <tr>
           <td>Type:</td>
-          <td><input type="text" name="type"/> <br /></td>
+          <td>
+            <select name="type">
+              <optgroup label="FOOD">
+                <option>
+                  Salads
+                </option>
+                <option>
+                  Fastfood
+                </option>
+                <option>
+                  Desserts
+                </option>
+                <option>
+                  Drinks
+                </option>
+              </optgroup>
+
+              <optgroup label="FOOD">
+                <option>
+                  Clothes
+                </option>
+                <option>
+                  Electronics
+                </option>
+                <option>
+                  Tools
+                </option>
+                <option>
+                  Other
+                </option>
+              </optgroup>
+
+            </select>
+             <br />
+           </td>
         </tr>
 
         <tr>

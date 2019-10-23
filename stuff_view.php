@@ -14,10 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/83dfe2e2a2.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <title id="pagetitle">HOME | Food&Stuff</title>
+  <title id="pagetitle">STUFF | Food&Stuff</title>
 </head>
 
 <body>
@@ -25,67 +23,53 @@
   <?php include "includes/headermenu.php"; ?>
 
   <!-- CONTENT -->
-  <div class="container-fluid">
+  <div class="container">
 
-    <div class="sloganimg">
-      <div class="slogan">We have everything! <br />
-        <span class="slogan2">(literally)</span> <br />
-        <span class="slogan2 fnsNatpis">Food&Stuff</span>
-      </div>
+    <div class="header2 fmHeader2 noBorder">
+      <h2 id="stuff-title">-</h2>
     </div>
 
-
-    <div class="container">
-      <div class="header2 noBorder homeHeader2">
-        <h2>SPECIAL FOOD OFFERS</h2>
-      </div>
+    <div class="row fnsContainer1 fnsContainer2 clickedItemContainer">
 
       <?php
-        $sql = "SELECT * FROM foodtable ORDER BY food_id DESC LIMIT 2";
+      if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM stufftable WHERE stuff_id = '$id'";
         $query = mysqli_query($conn, $sql);
 
         while($row = mysqli_fetch_array($query)){
-          $food_id = $row['food_id'];
-          $food_img = $row['food_img'];
-          $food_name = $row['food_name'];
-          $food_type = $row['food_type'];
-          $food_desc = $row['food_desc'];
-          $food_price = $row['food_price'];
+          $stuff_id = $row['stuff_id'];
+          $stuff_img = $row['stuff_img'];
+          $stuff_name = $row['stuff_name'];
 
+          $stuff_desc = $row['stuff_desc'];
+          $stuff_price = $row['stuff_price'];
       ?>
-      <div class="row fnsContainer1">
-        <div class="col-md-4 foodPic">
-          <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail"/>
-        </div>
-        <div class="col-md-8 foodDescContainer">
-          <h1 class="headerRes"><span class="newItem">NEW!</span> <?php echo $food_name; ?> </h1>
-          <p class="lead"><?php echo $food_desc; ?></p>
-          <div class="add2cart">
-            <span class="itemPrice"><?php echo "$".$food_price; ?></span><br />
-            <button class="addBtn btn btn-danger">Add to cart!</button>
+          <div class="col-12 col-md-7 stuffFullImage">
+            <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail" alt="">
           </div>
-        </div>
-      </div>
+
+          <div class="col-12 col-md-5 stuffDescDiv">
+            <div class="fmFoodName" title="<?php echo $stuff_name; ?>"><?php echo $stuff_name; ?></div>
+            <div class="fmFoodDesc" title="<?php echo $stuff_desc; ?>">
+              <?php echo $stuff_desc; ?>
+            </div>
+            <br />
+            <div class="fmFoodPrice svStuffPrice">
+              <span class="itemPrice3 itemPrice4">$ <?php echo $stuff_price; ?></span>
+              <button class="addBtn3 addBtn4 btn btn-danger">Add to cart!</button>
+            </div>
+          </div>
+
       <?php
         }
-      ?>
-      <!--
-      <div class="row fnsContainer1">
-        <div class="col-md-4 foodPic">
-          <img src="images/img4.jpg" class="img-responsive img-thumbnail"/>
-        </div>
-        <div class="col-md-8 foodDescContainer">
-          <h1 class="headerRes"><span class="newItem">NEW!</span> Dijabetes XL </h1>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus cum sed perferendis harum totam hic tempore soluta, labore assumenda beatae quas ullam itaque magni veritatis nam eius quasi tenetur. Porro.</p>
-          <div class="add2cart">
-            <span class="itemPrice">$9.99</span><br />
-            <button class="addBtn btn btn-danger">Add to cart!</button>
-          </div>
-        </div>
-      </div>
-    </div> ovo obrisat mozda-->
+        echo "<script>
+          document.getElementById('stuff-title').innerHTML = '$stuff_name'
+        </script>";
+      }
+  ?>
 
-
+    </div>
     <div class="header2 noBorder">
       <h2>Recommended stuff: clothes</h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
     </div>

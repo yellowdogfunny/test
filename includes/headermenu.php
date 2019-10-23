@@ -10,16 +10,21 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link homeBtn" href="index.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="foodmenu.php">Food Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Stuff</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+        <li class="nav-item"><a class="nav-link homeBtn" href="index.php" id="navHome">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="foodmenu.php" id="navFoodMenu">Food Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="stuff.php" id="navStuff">Stuff</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="navAboutUs">About us</a></li>
         <li class="nav-item"><button class="btn btn-outline-dark my-2 my-md-0 cartBtn"><i class="fas fa-shopping-cart"> 1 </i></button></li>
       </ul>
       <form class="form-inline my-2 my-md-0">
         <input class="form-control mr-md-2 inputField" type="search" placeholder="Search something..." aria-label="Search">
         <button class="btn btn-outline-dark my-2 my-md-0 searchBtn" type="submit"><i class="fas fa-search fa-sm searchIcon"></i></button>
       </form>
+
     </div>
   </nav>
 </div>
+
+<script>
+
+</script>

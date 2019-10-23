@@ -15,10 +15,10 @@
   <script src="https://kit.fontawesome.com/83dfe2e2a2.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title id="pagetitle">FOOD MENU | Food&Stuff</title>
+  <title id="pagetitle">STUFF | Food&Stuff</title>
 </head>
 
-<body>
+<body class="stuffBody">
   <!-- HEADER -->
   <?php include "includes/headermenu.php"; ?>
 
@@ -29,52 +29,56 @@
       All <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
-      Salads <input type="checkbox"/>
+      Clothes <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
-      Fastfood <input type="checkbox"/>
+      Electronics <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
-      Desserts <input type="checkbox"/>
+      Tools <input type="checkbox"/>
     </div>
     <div class="sortMenuDiv">
-      Drinks <input type="checkbox"/>
+      Other <input type="checkbox"/>
     </div>
   </div>
 
   <!-- CONTENT -->
-  <div class="container">
+  <div class="container stfContainer">
     <div class="header2 fmHeader2 noBorder">
-      <h2>Food: All</h2>
+      <h2><font color="grey">Stuff: All</font></h2>
     </div>
-    <div class="row fnsContainer1 fnsContainer2">
+    <div class="row fnsContainer1 fnsContainer2 stuffContainer">
 
       <?php
-        $sql = 'SELECT * FROM foodtable';
+        $sql = 'SELECT * FROM stufftable';
         $sqlquery = mysqli_query($conn, $sql);
 
         while($row = mysqli_fetch_array($sqlquery)){
-          $food_id = $row['food_id'];
-          $food_img = $row['food_img'];
-          $food_name = $row['food_name'];
-          //$food_type = $row['food_type'];
-          $food_desc = $row['food_desc'];
-          $food_price = $row['food_price'];
+          $stuff_id = $row['stuff_id'];
+          $stuff_img = $row['stuff_img'];
+          $stuff_name = $row['stuff_name'];
+
+          $stuff_desc = $row['stuff_desc'];
+          $stuff_price = $row['stuff_price'];
       ?>
 
-          <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-            <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail" alt="">
-            <div class="fmFoodName" title="<?php echo $food_name; ?>"><?php echo $food_name; ?></div>
-            <div class="fmFoodDesc" title="<?php echo $food_desc; ?>">
-              <?php echo $food_desc; ?>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food stuff_stuffContainer">
+                <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
+                  <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail" alt="">
+                  <div class="fmFoodName" title="<?php echo $stuff_name; ?>"><?php echo $stuff_name; ?></div>
+                  <div class="fmFoodDesc" title="<?php echo $stuff_desc; ?>">
+                    <?php echo $stuff_desc; ?>
+                  </div>
+                  <br />
+                </a>
+                <div class="fmFoodPrice">
+                  <span class="itemPrice3">$ <?php echo $stuff_price; ?></span>
+                  <button class="addBtn3 btn btn-danger" onclick="alert('added to cart')">Add to cart!</button>
+                </div>
+                <hr width="90%" color="red"/>
+
             </div>
-            <br />
-            <div class="fmFoodPrice">
-              <span class="itemPrice3">$ <?php echo $food_price; ?></span>
-              <button class="addBtn3 btn btn-danger">Add to cart!</button>
-            </div>
-            <hr width="90%" color="red"/>
-          </div>
+
       <?php
         }
       ?>
@@ -82,6 +86,7 @@
   </div>
 
   <?php include "includes/footer.php"; ?>
+
 </body>
 
 </html>

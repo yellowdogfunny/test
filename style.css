@@ -22,6 +22,8 @@ body{
   padding: 0;
 }
 
+
+
 .searchIcon{
   padding-top: 4px;
   padding-bottom: 4px;
@@ -110,12 +112,14 @@ a:hover{
     font-size: 1em;
   }
 
-  .
+
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////
 //          CONTENT
 /////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
 
 .fnsNatpis{
   font-family: 'Dancing Script', cursive;
@@ -250,10 +254,19 @@ a:hover{
   margin-left: 5%;
 }
 
+
 .img-thumbnail{
   background-color: red;
   border: none;
   border-radius: 0;
+  /*TODO: mozda maknit ovo width i height i dolje ovo object fit:cover i pronac neki drugi nacin da bude width i height proporcijalni*/
+  width: 325px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.img-thumbnail img{
+  /*object-fit: cover;*/
 }
 
 .itemImage.img-thumbnail{
@@ -525,4 +538,67 @@ a:hover{
 }
 .adminTablesDiv table tr td{
   border: 1px solid black;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////
+//          Stuff & Stuff view
+/////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.stuff_stuffContainer a{
+  text-decoration: none;
+}
+
+.stuffFullImage .img-thumbnail{
+  object-fit:contain;
+  width: 100%;
+  height: 100%;
+  background-color: white !important;
+  border: 1px solid red;
+}
+
+/*
+.stuffContainer .img-thumbnail{
+  background-color: grey !important;
+}
+
+.stuffContainer .fmFoodName{
+  border-color: grey;
+}
+*/
+.stuffDescDiv{
+
+}
+
+.stfContainer{
+  background-color: rgb(220, 220, 220) !important;
+}
+
+.svStuffPrice{
+  margin-top: 50% !important;
+
+}
+
+.clickedItemContainer{
+  border-bottom: 1px solid red;
+  padding-bottom: 50px !important;
+}
+
+.itemPrice4{
+
+}
+
+.addBtn4{
+  margin-left: 20%;
+}
+
+@media(max-width: 768px){
+  .svStuffPrice{
+    margin-top: 10% !important;
+    margin-bottom: 20%;
+  }
+  .stuffFullImage .img-thumbnail{
+    object-fit:contain;
+    width: 100%;
+    height: auto;
+    background-color: white !important;
+    border: 1px solid red;
+  }
 }
