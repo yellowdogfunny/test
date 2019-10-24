@@ -37,7 +37,7 @@
 
     <div class="container">
       <div class="header2 noBorder homeHeader2">
-        <h2>SPECIAL FOOD OFFERS</h2>
+        <h2>SPECIAL FOOD/DRINKS OFFERS</h2>
       </div>
 
       <?php
@@ -87,13 +87,19 @@
 
 
     <div class="header2 noBorder">
-      <h2>Recommended stuff: clothes</h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
+      <h2>Recommended stuff: <?php echo $_COOKIE["recommendedStuff"]; ?></h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
     </div>
 
     <div class="row fnsContainer1 rcmItems">
 
       <?php
-        $sql2 = "SELECT * FROM stufftable ORDER BY stuff_id LIMIT 4";
+        if(isset($_COOKIE["recommendedStuff"])){
+          $ckStuffType = $_COOKIE["recommendedStuff"];
+          $sql2 = "SELECT * FROM stufftable WHERE stuff_type = '$ckStuffType' ORDER BY stuff_id LIMIT 4";
+        }else{
+          $sql2 = "SELECT * FROM stufftable ORDER BY stuff_id LIMIT 4";
+        }
+
         $query2 = mysqli_query($conn, $sql2);
 
         while($row2 = mysqli_fetch_array($query2)){
@@ -119,24 +125,6 @@
         }
       ?>
 
-
-      <!--
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 itemPic">
-        <img src="images/jakna.jpg" class="img-responsive img-thumbnail itemImage"/>
-        <h4 class="header4">Jakna <span class="itemPrice2" style="color:red;">$20.99</span><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
-        <hr color="red" width="80%"/>
-      </div>
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 itemPic">
-        <img src="images/jakna.jpg" class="img-responsive img-thumbnail itemImage"/>
-        <h4 class="header4">Jakna <span class="itemPrice2" style="color:red;">$20.99</span><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
-        <hr color="red" width="80%"/>
-      </div>
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 itemPic">
-        <img src="images/jakna.jpg" class="img-responsive img-thumbnail itemImage"/>
-        <h4 class="header4">Jakna <span class="itemPrice2" style="color:red;">$20.99</span><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
-        <hr color="red" width="80%"/>
-      </div>
-    -->
     </div>
   </div>
 

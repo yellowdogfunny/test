@@ -26,31 +26,59 @@
 
   <div class="container-fluid sortMenuContainer">
     <div class="sortMenuDiv">
-      All <input type="checkbox"/>
+      <a href="foodmenu.php?fcheck=All">All</a>
     </div>
     <div class="sortMenuDiv">
-      Salads <input type="checkbox"/>
+      <a href="foodmenu.php?fcheck=Salads">Salads</a>
     </div>
     <div class="sortMenuDiv">
-      Fastfood <input type="checkbox"/>
+      <a href="foodmenu.php?fcheck=Fastfood">Fastfood</a>
     </div>
     <div class="sortMenuDiv">
-      Desserts <input type="checkbox"/>
+      <a href="foodmenu.php?fcheck=Desserts">Desserts</a>
     </div>
     <div class="sortMenuDiv">
-      Drinks <input type="checkbox"/>
+      <a href="foodmenu.php?fcheck=Drinks">Drinks</a>
     </div>
   </div>
 
   <!-- CONTENT -->
+  <?php
+
+  ?>
   <div class="container">
     <div class="header2 fmHeader2 noBorder">
-      <h2>Food: All</h2>
+      <h2>Food: <span id="foodtypeheader">All</span></h2>
     </div>
     <div class="row fnsContainer1 fnsContainer2">
 
       <?php
-        $sql = 'SELECT * FROM foodtable';
+        if(isset($_GET['fcheck'])){
+          $fcheck = $_GET['fcheck'];
+
+          if($fcheck == 'All'){
+            $sql = 'SELECT * FROM foodtable';
+            echo "<script> document.getElementById('foodtypeheader').innerHTML = 'All'; </script>";
+          }else if($fcheck == 'Salads'){
+            $sql ="SELECT * FROM foodtable WHERE food_type = 'Salads'";
+          }else if($fcheck == 'Fastfood'){
+            $sql ="SELECT * FROM foodtable WHERE food_type = 'Fastfood'";
+          }else if($fcheck == 'Desserts'){
+            $sql ="SELECT * FROM foodtable WHERE food_type = 'Desserts'";
+          }else if($fcheck == 'Drinks'){
+            $sql ="SELECT * FROM foodtable WHERE food_type = 'Drinks'";
+          }else{
+            $sql = 'SELECT * FROM foodtable';
+            echo "<script> document.getElementById('foodtypeheader').innerHTML = 'All'; </script>";
+          }
+          echo "<script> document.getElementById('foodtypeheader').innerHTML = '$fcheck'; </script>";
+        }else{
+          $sql = 'SELECT * FROM foodtable';
+          echo "<script> document.getElementById('foodtypeheader').innerHTML = 'All'; </script>";
+        }
+
+
+
         $sqlquery = mysqli_query($conn, $sql);
 
         while($row = mysqli_fetch_array($sqlquery)){

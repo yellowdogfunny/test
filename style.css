@@ -473,6 +473,13 @@ a:hover{
   background-color: #f8f9fa;
 }
 
+.lead{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 @media (max-width: 768px){
   .container{
     max-width: 100% !important;
@@ -488,6 +495,7 @@ a:hover{
     font-size: 0.9em;
   }
 }
+
 
 @media (max-width: 576px){
   .foodContainer{
@@ -601,4 +609,46 @@ a:hover{
     background-color: white !important;
     border: 1px solid red;
   }
+}
+
+.sResultHeader{
+  text-align: left !important;
+
+  border-top: 5px solid red;
+  padding-left: 5%;
+  padding-top: 1%;
+}
+
+.HeaderTxtStuff{
+  color: grey;
+}
+
+.sResultHeaderStuff{
+  border-color: grey;
+}
+
+.srImage{
+  border: 1px solid blue;
+}
+
+.srImage .stuffFullImage{
+
+}
+
+.srText{
+  border: 1px solid green;
+}
+
+.searchContaineri{
+  border: 1px solid red;
+}
+
+.searchContaineri .headerRes{
+  font-size: 2em;
+}
+.searchContaineri .lead{
+  font-size: 1.1em;
+}
+.searchContaineri .itemPrice{
+  font-size: 2em;
 }

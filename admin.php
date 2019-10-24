@@ -8,8 +8,9 @@ include "includes/conn.php";
   </head>
 
   <body>
-    <h1>F&S - Administration</h1>
+    <h1>F&S - Administration </h1>
     <hr />
+    <a href="index.php">- Food&Stuff Homepage -</a>
     <!--TODO: Napravit da se ne moze stisnit upload button dok se ne ispune sva polja itd itd sa javascriptom-->
     <h3>Upload food or stuff to the database</h3>
     <form action="scripts/upload.php" method="POST" enctype="multipart/form-data">
@@ -133,7 +134,7 @@ include "includes/conn.php";
       }
       else{
         $searchInput = $_GET['searchInput'];
-        $sql = "SELECT * FROM foodtable WHERE food_name='$searchInput'";
+        $sql = "SELECT * FROM foodtable WHERE food_name LIKE '%$searchInput%'";
       }
 
 
@@ -164,7 +165,7 @@ include "includes/conn.php";
           </tr>
           <tr>
             <td>Image:</td>
-            <td class="breakword"><?php echo $food_img; ?></td>
+            <td class="breakword"><?php echo $food_img; ?><br /><img src="<?php echo $food_img; ?>" width="200px"/></td>
           </tr>
           <tr>
             <td>Food name:</td>
@@ -245,7 +246,7 @@ include "includes/conn.php";
       }
       else{
         $searchInput2 = $_GET['searchInput2'];
-        $sql2 = "SELECT * FROM stufftable WHERE stuff_name='$searchInput2'";
+        $sql2 = "SELECT * FROM stufftable WHERE stuff_name LIKE '%$searchInput2%'";
       }
 
 
@@ -269,14 +270,14 @@ include "includes/conn.php";
           </tr>
           <tr>
             <td>Image:</td>
-            <td class="breakword"><?php echo $stuff_img; ?></td>
+            <td class="breakword"><?php echo $stuff_img; ?><br /><img src="<?php echo $stuff_img; ?>" width="200px" /></td>
           </tr>
           <tr>
-            <td>Food name:</td>
+            <td>Stuff name:</td>
             <td class="breakword"><?php echo $stuff_name; ?></td>
           </tr>
           <tr>
-            <td>Food type:</td>
+            <td>Stuff type:</td>
             <td class="breakword"><?php echo $stuff_type; ?></td>
           </tr>
           <tr>

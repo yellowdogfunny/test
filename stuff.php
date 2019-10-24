@@ -26,31 +26,44 @@
 
   <div class="container-fluid sortMenuContainer">
     <div class="sortMenuDiv">
-      All <input type="checkbox"/>
+      <a href="stuff.php?scheck=All">All</a>
     </div>
     <div class="sortMenuDiv">
-      Clothes <input type="checkbox"/>
+      <a href="stuff.php?scheck=Clothes">Clothes</a>
     </div>
     <div class="sortMenuDiv">
-      Electronics <input type="checkbox"/>
+      <a href="stuff.php?scheck=Electronics">Electronics</a>
     </div>
     <div class="sortMenuDiv">
-      Tools <input type="checkbox"/>
+      <a href="stuff.php?scheck=Tools">Tools</a>
     </div>
     <div class="sortMenuDiv">
-      Other <input type="checkbox"/>
+      <a href="stuff.php?scheck=Other">Other</a>
     </div>
   </div>
 
   <!-- CONTENT -->
   <div class="container stfContainer">
     <div class="header2 fmHeader2 noBorder">
-      <h2><font color="grey">Stuff: All</font></h2>
+      <h2><font color="grey">Stuff: <span id="foodtypeheader">All</span></font></h2>
     </div>
     <div class="row fnsContainer1 fnsContainer2 stuffContainer">
 
       <?php
-        $sql = 'SELECT * FROM stufftable';
+        if(isset($_GET['scheck'])){
+          $scheck = $_GET['scheck'];
+          if($scheck == 'All'){
+              $sql = "SELECT * FROM stufftable";
+              echo "<script> document.getElementById('foodtypeheader').innerHTML = 'All'; </script>";
+          }else{
+            $sql = "SELECT * FROM stufftable WHERE stuff_type = '$scheck'";
+            echo "<script> document.getElementById('foodtypeheader').innerHTML = '$scheck'; </script>";
+          }
+        }else{
+          $sql = "SELECT * FROM stufftable";
+          echo "<script> document.getElementById('foodtypeheader').innerHTML = 'All'; </script>";
+        }
+        //$sql = 'SELECT * FROM stufftable';
         $sqlquery = mysqli_query($conn, $sql);
 
         while($row = mysqli_fetch_array($sqlquery)){
