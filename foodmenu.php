@@ -1,4 +1,31 @@
-<?php include 'includes/conn.php';?>
+<?php include 'includes/conn.php';
+
+session_start();
+if(isset($_POST['add2cartbtn'])){
+  if(isset($_SESSION['shoppingcart'])){
+    $item_array_id = array_column($_SESSION["shoppingcart"], "item_id");
+    if(!in_array($_GET['item_id'], $item_array_id)){
+      $count = count($_SESSION["shoppingcart"]);
+      $item_array = array(
+        'item_id' => $_GET['item_id'],
+        'item_name' => $_POST['hidden_name'],
+        'item_price' => $_POST['hidden_price']
+      );
+      $_SESSION["shoppingcart"][$count] = $item_array;
+    }else{
+      //echo "<script>alert('Item already added!')</script>";
+      //echo "<script>window.location='foodmenu.php'</script>";
+    }
+  }else{
+    $item_array = array(
+      'item_id' => $_GET['item_id'],
+      'item_name' => $_POST['hidden_name'],
+      'item_price' => $_POST['hidden_price']
+    );
+    $_SESSION["shoppingcart"][0] = $item_array;
+  }
+}
+?>
 <html lang="en">
 
 <head>
@@ -89,20 +116,31 @@
           $food_desc = $row['food_desc'];
           $food_price = $row['food_price'];
       ?>
+          <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food stuff_stuffContainer">
 
-          <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food">
-            <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail" alt="">
-            <div class="fmFoodName" title="<?php echo $food_name; ?>"><?php echo $food_name; ?></div>
-            <div class="fmFoodDesc" title="<?php echo $food_desc; ?>">
-              <?php echo $food_desc; ?>
-            </div>
-            <br />
-            <div class="fmFoodPrice">
-              <span class="itemPrice3">$ <?php echo $food_price; ?></span>
-              <button class="addBtn3 btn btn-danger">Add to cart!</button>
-            </div>
-            <hr width="90%" color="red"/>
+              <img src="<?php echo $food_img; ?>" class="img-responsive img-thumbnail" alt="">
+              <div class="fmFoodName" title="<?php echo $food_name; ?>"><?php echo $food_name; ?></div>
+              <div class="fmFoodDesc" title="<?php echo $food_desc; ?>">
+                <?php echo $food_desc; ?>
+              </div>
+              <br />
+
+              <div class="fmFoodPrice">
+                <div class="text-danger itemPrice5">
+                  $ <?php echo $food_price; ?>
+                </div>
+
+                <form class="" action="foodmenu.php?item_id=<?php echo $food_id; ?>" method="post">
+                  <input type="hidden" name="hidden_name" value="<?php echo $food_name; ?>">
+                  <input type="hidden" name="hidden_price" value="<?php echo $food_price; ?>">
+                  <input type="submit" class="btn btn-danger" name="add2cartbtn" value="Add to cart!">
+                </form>
+
+              </div>
+              <hr width="90%" color="red"/>
+
           </div>
+
       <?php
         }
       ?>

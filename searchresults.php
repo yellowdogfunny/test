@@ -1,4 +1,30 @@
-<?php include "includes/conn.php"; ?>
+<?php include "includes/conn.php";
+session_start();
+if(isset($_POST['add2cartbtn'])){
+  if(isset($_SESSION['shoppingcart'])){
+    $item_array_id = array_column($_SESSION["shoppingcart"], "item_id");
+    if(!in_array($_GET['item_id'], $item_array_id)){
+      $count = count($_SESSION["shoppingcart"]);
+      $item_array = array(
+        'item_id' => $_GET['item_id'],
+        'item_name' => $_POST['hidden_name'],
+        'item_price' => $_POST['hidden_price']
+      );
+      $_SESSION["shoppingcart"][$count] = $item_array;
+    }else{
+      //echo "<script>alert('Item already added!')</script>";
+      //echo "<script>window.location='foodmenu.php'</script>";
+    }
+  }else{
+    $item_array = array(
+      'item_id' => $_GET['item_id'],
+      'item_name' => $_POST['hidden_name'],
+      'item_price' => $_POST['hidden_price']
+    );
+    $_SESSION["shoppingcart"][0] = $item_array;
+  }
+}
+?>
 <?php
   if(isset($_GET['searchInput'])){
     $sinput4cookie = $_GET['searchInput'];
@@ -73,6 +99,7 @@
               $query = mysqli_query($conn, $sql);
 
               while($row = mysqli_fetch_array($query)){
+                $food_id = $row['food_id'];
                 $food_img = $row['food_img'];
                 $food_name = $row['food_name'];
                 $food_desc = $row['food_desc'];
@@ -88,7 +115,13 @@
                     <p class="lead"><?php echo $food_desc; ?></p>
                     <div class="add2cart">
                       <span class="itemPrice"><?php echo "$".$food_price; ?></span><br />
-                      <button class="addBtn btn btn-danger">Add to cart!</button>
+
+                      <form class="" action="searchresults.php?searchInput=<?php echo $searchInput; ?>&item_id=<?php echo $food_id; ?>&searchSubmit=" method="post">
+                        <input type="hidden" name="hidden_name" value="<?php echo $food_name; ?>">
+                        <input type="hidden" name="hidden_price" value="<?php echo $food_price; ?>">
+                        <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="Add to cart!">
+                      </form>
+
                     </div>
                   </div>
                 </div>
@@ -134,7 +167,13 @@
                       </a>
                       <div class="add2cart">
                         <span class="itemPrice"><?php echo "$".$stuff_price; ?></span><br />
-                        <button class="addBtn btn btn-danger">Add to cart!</button>
+
+                        <form class="" action="searchresults.php?searchInput=<?php echo $searchInput; ?>&item_id=<?php echo $stuff_id; ?>&searchSubmit=" method="post">
+                          <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                          <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                          <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="Add to cart!">
+                        </form>
+
                       </div>
                     </div>
 

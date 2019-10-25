@@ -1,4 +1,33 @@
-<?php include 'includes/conn.php';?>
+<?php include 'includes/conn.php';
+
+session_start();
+if(isset($_POST['add2cartbtn'])){
+  if(isset($_SESSION['shoppingcart'])){
+    $item_array_id = array_column($_SESSION["shoppingcart"], "item_id");
+    if(!in_array($_GET['item_id'], $item_array_id)){
+      $count = count($_SESSION["shoppingcart"]);
+      $item_array = array(
+        'item_id' => $_GET['item_id'],
+        'item_name' => $_POST['hidden_name'],
+        'item_price' => $_POST['hidden_price']
+      );
+      $_SESSION["shoppingcart"][$count] = $item_array;
+    }else{
+      //echo "<script>alert('Item already added!')</script>";
+      //echo "<script>window.location='index.php'</script>";
+    }
+  }else{
+    $item_array = array(
+      'item_id' => $_GET['item_id'],
+      'item_name' => $_POST['hidden_name'],
+      'item_price' => $_POST['hidden_price']
+    );
+    $_SESSION["shoppingcart"][0] = $item_array;
+  }
+}
+$buttonName1 = "Add to cart!";
+$buttonName2 = "(IN CART)!";
+?>
 <html lang="en">
 
 <head>
@@ -62,29 +91,20 @@
           <p class="lead"><?php echo $food_desc; ?></p>
           <div class="add2cart">
             <span class="itemPrice"><?php echo "$".$food_price; ?></span><br />
-            <button class="addBtn btn btn-danger">Add to cart!</button>
+
+            <!-- Add to cart -->
+            <form class="" action="index.php?item_id=<?php echo $food_id; ?>" method="post">
+              <input type="hidden" name="hidden_name" value="<?php echo $food_name; ?>">
+              <input type="hidden" name="hidden_price" value="<?php echo $food_price; ?>">
+              <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="<?php echo $buttonName1;?>!">
+            </form>
+
           </div>
         </div>
       </div>
       <?php
         }
       ?>
-      <!--
-      <div class="row fnsContainer1">
-        <div class="col-md-4 foodPic">
-          <img src="images/img4.jpg" class="img-responsive img-thumbnail"/>
-        </div>
-        <div class="col-md-8 foodDescContainer">
-          <h1 class="headerRes"><span class="newItem">NEW!</span> Dijabetes XL </h1>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus cum sed perferendis harum totam hic tempore soluta, labore assumenda beatae quas ullam itaque magni veritatis nam eius quasi tenetur. Porro.</p>
-          <div class="add2cart">
-            <span class="itemPrice">$9.99</span><br />
-            <button class="addBtn btn btn-danger">Add to cart!</button>
-          </div>
-        </div>
-      </div>
-    </div> ovo obrisat mozda-->
-
 
     <div class="header2 noBorder">
       <h2>Recommended stuff: <?php echo $_COOKIE["recommendedStuff"]; ?></h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
@@ -116,7 +136,14 @@
             <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
               <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail itemImage"/>
             </a>
-            <h4 class="header4"> <?php echo $stuff_name; ?> <span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br /><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
+            <h4 class="header4"> <?php echo $stuff_name; ?> <span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br />
+
+              <form class="" action="index.php?item_id=<?php echo $stuff_id; ?>" method="post">
+                <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                <input type="submit" class="btn btn-danger" name="add2cartbtn" value="<?php echo $buttonName1; ?>">
+              </form>
+
             <hr color="red" width="80%"/>
           </div>
 

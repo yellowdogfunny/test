@@ -1,3 +1,6 @@
+<?php
+header('Cache-Control: no-cache');
+?>
 <div class="container-fluid">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="logodiv">
@@ -14,7 +17,23 @@
         <li class="nav-item"><a class="nav-link" href="foodmenu.php" id="navFoodMenu">Food Menu</a></li>
         <li class="nav-item"><a class="nav-link" href="stuff.php" id="navStuff">Stuff</a></li>
         <li class="nav-item"><a class="nav-link" href="#" id="navAboutUs">About us</a></li>
-        <li class="nav-item"><button class="btn btn-outline-dark my-2 my-md-0 cartBtn" onclick="window.location.href='cart.php'"><i class="fas fa-shopping-cart"> 1 </i></button></li>
+        <li class="nav-item">
+          <button class="btn btn-outline-dark my-2 my-md-0 cartBtn" onclick="window.location.href='cart.php'">
+            <i class="fas fa-shopping-cart">
+               <?php
+               if(isset($_SESSION["shoppingcart"])){
+                 if(count($_SESSION["shoppingcart"]) > 0) {
+                   echo count($_SESSION["shoppingcart"]);
+                 } else{
+                   echo "0";
+                 }
+               }else{
+                 echo "0";
+               }
+               ?>
+             </i>
+           </button>
+         </li>
       </ul>
       <form class="form-inline my-2 my-md-0" action="searchresults.php" method="GET">
         <input class="form-control mr-md-2 inputField" type="search" placeholder="Search something..." aria-label="Search" name="searchInput">

@@ -1,4 +1,32 @@
-<?php include 'includes/conn.php';?>
+<?php include 'includes/conn.php';
+
+session_start();
+if(isset($_POST['add2cartbtn'])){
+  if(isset($_SESSION['shoppingcart'])){
+    $item_array_id = array_column($_SESSION["shoppingcart"], "item_id");
+    if(!in_array($_GET['item_id'], $item_array_id)){
+      $count = count($_SESSION["shoppingcart"]);
+      $item_array = array(
+        'item_id' => $_GET['item_id'],
+        'item_name' => $_POST['hidden_name'],
+        'item_price' => $_POST['hidden_price']
+      );
+      $_SESSION["shoppingcart"][$count] = $item_array;
+    }else{
+      //echo "<script>alert('Item already added!')</script>";
+      //echo "<script>window.location='stuff.php'</script>";
+    }
+  }else{
+    $item_array = array(
+      'item_id' => $_GET['item_id'],
+      'item_name' => $_POST['hidden_name'],
+      'item_price' => $_POST['hidden_price']
+    );
+    $_SESSION["shoppingcart"][0] = $item_array;
+  }
+}
+
+?>
 <html lang="en">
 
 <head>
@@ -75,6 +103,7 @@
           $stuff_price = $row['stuff_price'];
       ?>
 
+
             <div class="col-6 col-sm-6 col-md-4 col-lg-3 foodContainer food stuff_stuffContainer">
                 <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
                   <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail" alt="">
@@ -85,12 +114,20 @@
                   <br />
                 </a>
                 <div class="fmFoodPrice">
-                  <span class="itemPrice3">$ <?php echo $stuff_price; ?></span>
-                  <button class="addBtn3 btn btn-danger" onclick="alert('added to cart')">Add to cart!</button>
+                  <div class="text-danger itemPrice5">
+                    $ <?php echo $stuff_price; ?>
+                  </div>
+                  <form class="" action="stuff.php?item_id=<?php echo $stuff_id; ?>" method="post">
+                    <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                    <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                    <input type="submit" class="btn btn-danger" name="add2cartbtn" value="Add to cart!">
+                  </form>
                 </div>
                 <hr width="90%" color="red"/>
 
             </div>
+
+
 
       <?php
         }

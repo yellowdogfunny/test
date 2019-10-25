@@ -1,4 +1,30 @@
-<?php include 'includes/conn.php';?>
+<?php include 'includes/conn.php';
+session_start();
+if(isset($_POST['add2cartbtn'])){
+  if(isset($_SESSION['shoppingcart'])){
+    $item_array_id = array_column($_SESSION["shoppingcart"], "item_id");
+    if(!in_array($_GET['item_id'], $item_array_id)){
+      $count = count($_SESSION["shoppingcart"]);
+      $item_array = array(
+        'item_id' => $_GET['item_id'],
+        'item_name' => $_POST['hidden_name'],
+        'item_price' => $_POST['hidden_price']
+      );
+      $_SESSION["shoppingcart"][$count] = $item_array;
+    }else{
+      //echo "<script>alert('Item already added!')</script>";
+      //echo "<script>window.location='stuff_view.php'</script>";
+    }
+  }else{
+    $item_array = array(
+      'item_id' => $_GET['item_id'],
+      'item_name' => $_POST['hidden_name'],
+      'item_price' => $_POST['hidden_price']
+    );
+    $_SESSION["shoppingcart"][0] = $item_array;
+  }
+}
+?>
 <html lang="en">
 
 <head>
@@ -57,7 +83,13 @@
             <br />
             <div class="fmFoodPrice svStuffPrice">
               <span class="itemPrice3 itemPrice4">$ <?php echo $stuff_price; ?></span>
-              <button class="addBtn3 addBtn4 btn btn-danger">Add to cart!</button>
+
+              <form class="" action="stuff_view.php?item_id=<?php echo $stuff_id; ?>&id=<?php echo $id; ?>" method="post">
+                <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                <input type="submit" class="addBtn3 btn btn-danger" name="add2cartbtn" value="Add to cart!">
+              </form>
+
             </div>
           </div>
 
@@ -83,7 +115,7 @@
         }else{
           $sql2 = "SELECT * FROM stufftable ORDER BY stuff_id LIMIT 4";
         }
-        
+
         $query2 = mysqli_query($conn, $sql2);
 
         while($row2 = mysqli_fetch_array($query2)){
@@ -100,7 +132,14 @@
             <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
               <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail itemImage"/>
             </a>
-            <h4 class="header4"> <?php echo $stuff_name; ?> <br /><span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br /><br /><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
+            <h4 class="header4"> <?php echo $stuff_name; ?> <span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br />
+
+              <form class="" action="stuff_view.php?item_id=<?php echo $stuff_id; ?>&id=<?php echo $id; ?>" method="post">
+                <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                <input type="submit" class="btn btn-danger" name="add2cartbtn" value="Add to cart!">
+              </form>
+
             <hr color="red" width="80%"/>
           </div>
 

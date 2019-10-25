@@ -10,6 +10,11 @@ body{
   box-sizing: border-box;
 }
 
+.btnForm{
+  margin: 0 !important;
+  padding: 0 !important;
+  width: inherit;
+}
 
 .row{
   padding: 0 !important;
@@ -445,9 +450,10 @@ a:hover{
 }
 
 .fmFoodPrice{
-  text-align: right;
+  text-align: center;
 
-  border: 1px solid red;
+  border-left: 1px solid red;
+  border-right: 1px solid red;
   border-radius: 10px;
   position: relative;
   width: 80%;
@@ -651,4 +657,8 @@ a:hover{
 }
 .searchContaineri .itemPrice{
   font-size: 2em;
+}
+
+.itemPrice5{
+  font-size: 1.5em;
 }
