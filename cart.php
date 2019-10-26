@@ -1,4 +1,6 @@
 <?php
+include 'includes/conn.php';
+
 session_start();
 if(isset($_GET["action"])){
   if($_GET["action"] == "delete"){
@@ -11,8 +13,8 @@ if(isset($_GET["action"])){
   }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +31,7 @@ if(isset($_GET["action"])){
     <link rel="stylesheet" href="style.css">
     <title id="pagetitle">CART | Food&Stuff</title>
   </head>
-  <body>
+  <body class="stuffBody">
     <!-- HEADER -->
     <?php include "includes/headermenu.php";
 
