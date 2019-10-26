@@ -8,7 +8,8 @@ if(isset($_POST['add2cartbtn'])){
       $item_array = array(
         'item_id' => $_GET['item_id'],
         'item_name' => $_POST['hidden_name'],
-        'item_price' => $_POST['hidden_price']
+        'item_price' => $_POST['hidden_price'],
+        'item_img' => $_POST['hidden_img']
       );
       $_SESSION["shoppingcart"][$count] = $item_array;
     }else{
@@ -19,7 +20,8 @@ if(isset($_POST['add2cartbtn'])){
     $item_array = array(
       'item_id' => $_GET['item_id'],
       'item_name' => $_POST['hidden_name'],
-      'item_price' => $_POST['hidden_price']
+      'item_price' => $_POST['hidden_price'],
+      'item_img' => $_POST['hidden_img']
     );
     $_SESSION["shoppingcart"][0] = $item_array;
   }
@@ -82,12 +84,13 @@ if(isset($_POST['add2cartbtn'])){
             </div>
             <br />
             <div class="fmFoodPrice svStuffPrice">
-              <span class="itemPrice3 itemPrice4">$ <?php echo $stuff_price; ?></span>
-
+              <span class="itemPrice3 itemPrice4 itemPrice5">$ <?php echo $stuff_price; ?></span>
+              <br>
               <form class="" action="stuff_view.php?item_id=<?php echo $stuff_id; ?>&id=<?php echo $id; ?>" method="post">
                 <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
                 <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
-                <input type="submit" class="addBtn3 btn btn-danger" name="add2cartbtn" value="Add to cart!">
+                <input type="hidden" name="hidden_img" value="<?php echo $stuff_img; ?>">
+                <input type="submit" class="btn btn-danger" name="add2cartbtn" value="Add to cart!">
               </form>
 
             </div>
@@ -132,11 +135,15 @@ if(isset($_POST['add2cartbtn'])){
             <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
               <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail itemImage"/>
             </a>
-            <h4 class="header4"> <?php echo $stuff_name; ?> <span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br />
-
+            <h4 class="header4"> <?php echo $stuff_name; ?>
+            <br />
+            <span class="itemPrice2" style="color:red;">$<?php echo $stuff_price; ?></span>
+            <br />
+            </h4>
               <form class="" action="stuff_view.php?item_id=<?php echo $stuff_id; ?>&id=<?php echo $id; ?>" method="post">
                 <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
                 <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                <input type="hidden" name="hidden_img" value="<?php echo $stuff_img; ?>">
                 <input type="submit" class="btn btn-danger" name="add2cartbtn" value="Add to cart!">
               </form>
 

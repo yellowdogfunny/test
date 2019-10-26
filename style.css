@@ -1,9 +1,10 @@
 body{
   border-top: 5px solid black;
   background-color: #f8f9fa !important;
-  height: 100%;
-  word-wrap: break-word;
+  min-height: 100%;
+
   font-family: 'Barlow', sans-serif;
+
 }
 
 *{
@@ -285,6 +286,8 @@ a:hover{
   text-align: center;
   height: 200px;
   padding-top: 50px;
+  margin-top: 30%;
+
 }
 
 @media(max-width: 1503px){
@@ -661,4 +664,62 @@ a:hover{
 
 .itemPrice5{
   font-size: 1.5em;
+}
+
+
+.btn-success{
+  color: white !important;
+  font-size: 1.3em;
+}
+
+.btn-success:hover{
+  color: white !important;
+}
+
+.purchaseBtn{
+
+}
+
+.cart_total{
+  background-color: rgb(255, 153, 153) !important;
+  font-size: 1.2em;
+}
+
+.cart_table{
+  text-align: center;
+  word-break: break-all;
+}
+
+.cart_img{
+  object-fit: contain !important;
+
+}
+
+.cart_img img{
+  border: 1px solid red;
+  width: 150px;
+  height: 135px !important;
+  margin-right: 15%;
+}
+
+.purchase_success{
+  margin-top: 10%;
+  margin-bottom: 20%;
+}
+
+.itemPrice5{
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0;
+}
+
+.cart_th_img{
+  padding-right: 6.5% !important;
+}
+
+.removeBtn{
+  color: white !important;
+}
+.removeBtn:hover{
+  color: white !important;
 }

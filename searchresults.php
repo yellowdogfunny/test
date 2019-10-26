@@ -8,7 +8,8 @@ if(isset($_POST['add2cartbtn'])){
       $item_array = array(
         'item_id' => $_GET['item_id'],
         'item_name' => $_POST['hidden_name'],
-        'item_price' => $_POST['hidden_price']
+        'item_price' => $_POST['hidden_price'],
+        'item_img' => $_POST['hidden_img']
       );
       $_SESSION["shoppingcart"][$count] = $item_array;
     }else{
@@ -19,7 +20,8 @@ if(isset($_POST['add2cartbtn'])){
     $item_array = array(
       'item_id' => $_GET['item_id'],
       'item_name' => $_POST['hidden_name'],
-      'item_price' => $_POST['hidden_price']
+      'item_price' => $_POST['hidden_price'],
+      'item_img' => $_POST['hidden_img']
     );
     $_SESSION["shoppingcart"][0] = $item_array;
   }
@@ -119,6 +121,7 @@ if(isset($_POST['add2cartbtn'])){
                       <form class="" action="searchresults.php?searchInput=<?php echo $searchInput; ?>&item_id=<?php echo $food_id; ?>&searchSubmit=" method="post">
                         <input type="hidden" name="hidden_name" value="<?php echo $food_name; ?>">
                         <input type="hidden" name="hidden_price" value="<?php echo $food_price; ?>">
+                        <input type="hidden" name="hidden_img" value="<?php echo $food_img; ?>">
                         <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="Add to cart!">
                       </form>
 
@@ -171,6 +174,7 @@ if(isset($_POST['add2cartbtn'])){
                         <form class="" action="searchresults.php?searchInput=<?php echo $searchInput; ?>&item_id=<?php echo $stuff_id; ?>&searchSubmit=" method="post">
                           <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
                           <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                          <input type="hidden" name="hidden_img" value="<?php echo $stuff_img; ?>">
                           <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="Add to cart!">
                         </form>
 
@@ -259,8 +263,15 @@ if(isset($_POST['add2cartbtn'])){
             <a href="stuff_view.php?id=<?php echo $stuff_id; ?>">
               <img src="<?php echo $stuff_img; ?>" class="img-responsive img-thumbnail itemImage"/>
             </a>
+            <h4 class="header4"> <?php echo $stuff_name; ?> <span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br />
 
-            <h4 class="header4"> <a href="stuff_view.php?id=<?php echo $stuff_id; ?>"><?php echo $stuff_name; ?></a> <br /><span class="itemPrice2" style="color:red;"><br />$<?php echo $stuff_price; ?></span><br /><br /><button class="addBtn2 btn btn-danger">Add to cart!</button></h4>
+              <form class="" action="searchresults.php?searchInput=<?php echo $searchInput; ?>&item_id=<?php echo $stuff_id; ?>&searchSubmit=" method="post">
+                <input type="hidden" name="hidden_name" value="<?php echo $stuff_name; ?>">
+                <input type="hidden" name="hidden_price" value="<?php echo $stuff_price; ?>">
+                <input type="hidden" name="hidden_img" value="<?php echo $stuff_img; ?>">
+                <input type="submit" class="addBtn btn btn-danger" name="add2cartbtn" value="Add to cart!">
+              </form>
+
             <hr color="red" width="80%"/>
           </div>
 
