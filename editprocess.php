@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
 
     move_uploaded_file($temp, "./images/".$randImgName);
-    $imgUrl = "http://localhost/projects/restaurant/images/$randImgName";
+    $imgUrl = "images/$randImgName";
 
     echo "<br /><br />Image changed: YES <br /><br />";
 
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
 
 
   }else if(empty($_FILES["file"]["name"])){ //ako nije odabrao novu sliku
-    $imgUrl = "http://localhost/projects/restaurant/images/$item_img";
+    $imgUrl = $item_img;
     echo "<br />Image changed: NO <br /><br />";
 
     //: ovo je debugger

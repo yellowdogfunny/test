@@ -140,7 +140,7 @@ a:hover{
 
 .sloganimg {
   background-image: url("images/sloganimg4.jpg");
-  height: 50%;
+  height: /*92%*/ 60%;
   text-align: center;
   position: relative;
 }

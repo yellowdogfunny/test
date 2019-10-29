@@ -26,7 +26,7 @@ if(isset($_POST['submitbtn'])){
 
 
   move_uploaded_file($temp, "../images/".$randImgName);
-  $imgUrl = "http://localhost/projects/restaurant/images/$randImgName";
+  $imgUrl = "./images/$randImgName"; //TODO: promjenit
   mysqli_query($conn, "INSERT INTO $tablename VALUES
     (NULL, '$imgUrl', '$name', '$type', '$desc', '$price')
   ");

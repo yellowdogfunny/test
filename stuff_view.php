@@ -106,7 +106,7 @@ if(isset($_POST['add2cartbtn'])){
 
     </div>
     <div class="header2 noBorder">
-      <h2>Recommended stuff: <?php echo $_COOKIE["recommendedStuff"]; ?></h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
+      <h2>Recommended stuff: <?php if(isset($_COOKIE["recommendedStuff"])){echo $_COOKIE["recommendedStuff"];}else{echo " ";} ?></h2> <!-- recommended content na temelju searchanja na stranici, a ako nista nema searchano, po defaultu nesta stavit recommended -->
     </div>
 
     <div class="row fnsContainer1 rcmItems">
