@@ -723,3 +723,11 @@ a:hover{
 .removeBtn:hover{
   color: white !important;
 }
+
+.footerLinks{
+  color: white !important;
+}
+
+.footerLinks:hover{
+  color: white !important;
+}
