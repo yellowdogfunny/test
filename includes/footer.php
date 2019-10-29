@@ -8,7 +8,7 @@
       <a href="admin.php" style="color:white !important;">Admin homepage</a>
     </div>
     <div class="col-4">
-      <p>©Stjepan Milardic - <?php echo date("Y"); ?></p> 
+      <p>©Stjepan Milardic - <?php echo date("Y"); ?></p>  
     </div>
   </div>
 </div>
